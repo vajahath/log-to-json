@@ -6,7 +6,7 @@ Yet another transform stream to convert `.log` files to `.json`.
 
 ## Install
 
-Requires Node >=8.
+Requires Node >=10.
 
 From npm,
 
