@@ -7,9 +7,9 @@ const { LogToJSON } = require('../dist/index');
 
 import { join as pathJoin } from 'path';
 import { createReadStream, createWriteStream } from 'fs';
-// import { promises as fsp } from 'fs';
+import { promises as fsp } from 'fs';
 
-const SRC_PATH = pathJoin(__dirname, 'sample.log');
+const SRC_PATH = pathJoin(__dirname, 'sample._log');
 const DEST_PATH = pathJoin(__dirname, 'sample.log.json');
 
 describe('testing add sample log file', () => {
@@ -34,7 +34,7 @@ describe('testing add sample log file', () => {
 
       throw new Error('destination is not proper JSON');
     }
-  });
+  }, 10000);
 });
 
-// afterAll(() => fsp.unlink(DEST_PATH));
+afterAll(() => fsp.unlink(DEST_PATH));
