@@ -70,7 +70,6 @@ export class LogToJSON extends Transform {
    * @return {null}
    */
   _flush(cb: () => void) {
-    console.log('[flushing] ', this._laggedLine);
     if (this._laggedLine) {
       this.push(',' + this._laggedLine);
     }
