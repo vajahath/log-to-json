@@ -27,7 +27,6 @@ describe('testing add sample log file', () => {
         .on('error', (err: any) => reject(err));
     });
 
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....');
     try {
       require(DEST_PATH);
     } catch (err) {

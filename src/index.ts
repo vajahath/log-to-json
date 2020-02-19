@@ -13,7 +13,7 @@ export class LogToJSON extends Transform {
   /**
    * @param {object} options
    */
-  constructor(options: IConvertLogToJSON) {
+  constructor(options?: IConvertLogToJSON) {
     super(options);
     this._isInitialPush = true;
     this._laggedLine = null;
@@ -27,6 +27,16 @@ export class LogToJSON extends Transform {
   async _transform(chunk: Buffer | string, enc: string, cb: () => void) {
     if (!(chunk instanceof Buffer)) {
       chunk = Buffer.from(chunk);
+    }
+
+    try {
+      // check if the holding line is a complete object
+      if (this._laggedLine) {
+        JSON.parse(this._laggedLine);
+        this._laggedLine = '\n' + this._laggedLine + '\n';
+      }
+    } catch (err) {
+      // nothing here
     }
 
     chunk = Buffer.concat([Buffer.from(this._laggedLine || ''), chunk]);
@@ -52,7 +62,6 @@ export class LogToJSON extends Transform {
 
       this._laggedLine = line;
     }
-    console.log('[holding] ', this._laggedLine);
     cb();
   }
 
@@ -63,7 +72,7 @@ export class LogToJSON extends Transform {
   _flush(cb: () => void) {
     console.log('[flushing] ', this._laggedLine);
     if (this._laggedLine) {
-      this.push(', ' + this._laggedLine);
+      this.push(',' + this._laggedLine);
     }
     this.push(']');
     return cb();
