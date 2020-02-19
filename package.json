@@ -1,7 +1,7 @@
 {
-  "name": "@vaju/log-to-json",
+  "name": "log-to-json",
   "version": "1.0.0",
-  "description": "Yet another CLI/API log to JSON converter",
+  "description": "Yet another transform stream to convert `.log` files to `.json`.",
   "main": "dist/index.js",
   "files": [
     "dist/**/*",
