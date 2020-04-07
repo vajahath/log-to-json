@@ -1,8 +1,10 @@
 # log-to-json
 
-Yet another transform stream to convert `.log` files to `.json`.
+Yet another transform stream to convert JSON like `.log` files to `.json`.
 
 ![](https://github.com/vajahath/log-to-json/workflows/Build/badge.svg) [![](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+
+If you are looking for the CLI, see [log-to-json-cli](https://github.com/vajahath/log-to-json-cli).
 
 ## Install
 
@@ -37,7 +39,7 @@ fs.createReadStream('my.log')
 `my.log`:
 
 ```log
-{"my": 5, "log":9, "file": "fsadf"}
+{"my": 5, "log":9, "file": "fsadf"} # each object is a one-liner (this is necessary)
 {"my": 5, "log":9, "file": "fsadf"}
 {"my": 5, "log":9, "file": "fsadf"}
 {"my": 5, "log":9, "file": "fsadf"}
