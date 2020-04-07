@@ -1,6 +1,6 @@
 {
   "name": "log-to-json",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yet another transform stream to convert `.log` files to `.json`.",
   "main": "dist/index.js",
   "files": [
